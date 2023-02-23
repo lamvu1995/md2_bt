@@ -51,10 +51,10 @@ function addProduct() {
     return ID++
 }
 function GetList() {
-    let product = productManager.GetList()
-    for (const productKey in product) {
-            console.log(product[productKey].getInfo())
-    }
+    let product: any = productManager.GetList()
+    product.map(product => {
+        console.log(product.getInfo())
+    })
 }
 function DeleteProduct() {
     let id = input.question('Enter id: ');
@@ -73,9 +73,6 @@ let id = input.question('Enter id: ')
 }
 function FindByName() {
 let ProductName = input.question('Product Name: ')
-   productManager.FindProductByName(ProductName)
-
-    }
+    console.log(productManager.FindProductByName(ProductName))
 }
-
 showMainMenu()

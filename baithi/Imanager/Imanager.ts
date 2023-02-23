@@ -7,5 +7,4 @@ export interface Iproductmanager<T> {
     Delete(ID: any)
     FindIndexProduct(ID: any)
 FindProductByName(ProductName: string)
-    FindProductByName(ProductName: string)
 }

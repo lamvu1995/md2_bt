@@ -32,13 +32,11 @@ export class ProductManager implements Iproductmanager<Product> {
         return index
     }
 
-    GetList(): any {
-        if (this.products.length !== 0) {
-            return this.products
-        } else {
+    GetList() {
+        if (this.products.length == 0) {
             console.log('Get list Error!')
         }
-
+        return this.products
     }
 
     add(t: Product) {
@@ -57,9 +55,9 @@ export class ProductManager implements Iproductmanager<Product> {
 
     FindProductByName(ProductName: string) {
         if (this.FindIndexProductByName(ProductName) != -1) {
-            this.products[this.FindIndexProductByName(ProductName)]
+           return this.products[this.FindIndexProductByName(ProductName)].getInfo()
         } else {
-            console.log('Error!')
+           return 'Error!'
         }
     }
 }
