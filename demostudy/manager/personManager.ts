@@ -7,6 +7,7 @@ import {Housekeeper} from "../model/Housekeeper";
 
 export class Personmanager implements Imanager<Person> {
     static persons: Person[] = []
+
     constructor() {
     }
 
@@ -15,27 +16,25 @@ export class Personmanager implements Imanager<Person> {
     }
 
     deleteperson(id: number) {
-if (this.findindexperson(id) !== -1) {
-    Personmanager.persons.splice(this.findindexperson(id), 1)
-}
-else {
-    throw new Error('edit Error!')
-}
+        if (this.findIndexById(id) !== -1) {
+            Personmanager.persons.splice(this.findIndexById(id), 1)
+        } else {
+            console.log( '-------There is no person to be delete!------' )
+        }
     }
 
     edit(id: number, t: Person) {
-if (this.findindexperson(id) !== -1) {
- Personmanager.persons[this.findindexperson(id)] = t
-}
-else {
-    throw new Error('edit error!')
-}
+        if (this.findIndexById(id) !== -1) {
+            Personmanager.persons[this.findIndexById(id)] = t
+        } else {
+            console.log( '-------There is no person to be edit!------' )
+        }
     }
 
-    findindexperson(id: number) {
-let index = -1
+    findIndexById(id: number) {
+        let index = -1
         for (let i = 0; i < Personmanager.persons.length; i++) {
-            if(Personmanager.persons[i].id === id) {
+            if (Personmanager.persons[i].id === id) {
                 index = i
             }
         }
@@ -43,13 +42,30 @@ let index = -1
     }
 
     findperson(id: number) {
-if (this.findindexperson(id) !== -1) {
-    return Personmanager.persons[this.findindexperson(id)]
-}
+        if (this.findIndexById(id) !== -1) {
+            return Personmanager.persons[this.findIndexById(id)]
+        }
     }
 
     getlist() {
         return Personmanager.persons
     }
 
+    findIndexByName(name: string) {
+        let index = -1
+        for (let i = 0; i < Personmanager.persons.length; i++) {
+            if (Personmanager.persons[i].fullName == name) {
+                index = i;
+            }
+        }
+        return index;
+    }
+
+    findByName(name: string) {
+        if (this.findIndexByName(name) != -1) {
+            return Personmanager.persons[this.findIndexByName(name)].getInfo()
+        } else {
+            return `-------There is no person to be found!------`
+        }
+    }
 }

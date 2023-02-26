@@ -3,8 +3,9 @@ import {Person, Gender} from "./Person";
 export class Employee extends Person {
     private _work: string;
 
-    constructor(id: number, fullName: string, Gender: Gender, age: number, work: string) {
-        super(id, fullName, Gender, age);
+
+    constructor(id: number, fullName: string, gender: Gender, age: number, address: string, work: string) {
+        super(id, fullName, gender, age, address);
         this._work = work;
     }
 

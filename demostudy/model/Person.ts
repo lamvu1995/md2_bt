@@ -1,17 +1,19 @@
 export type Gender = 'Male' | 'Female' | 'Other'
+
 export class Person {
     private _id: number;
     private _fullName: string;
     private _gender: Gender;
     private _age: number;
+    private _address: string;
 
-    constructor(id: number, fullName: string, Gender: Gender, age: number) {
+    constructor(id: number, fullName: string, gender: Gender, age: number, address: string) {
         this._id = id;
         this._fullName = fullName;
-        this._gender = Gender;
+        this._gender = gender;
         this._age = age;
+        this._address = address;
     }
-
 
     get id(): number {
         return this._id;
@@ -29,11 +31,11 @@ export class Person {
         this._fullName = value;
     }
 
-    get Gender(): Gender {
+    get gender(): Gender {
         return this._gender;
     }
 
-    set Gender(value: Gender) {
+    set gender(value: Gender) {
         this._gender = value;
     }
 
@@ -44,6 +46,15 @@ export class Person {
     set age(value: number) {
         this._age = value;
     }
+
+    get address(): string {
+        return this._address;
+    }
+
+    set address(value: string) {
+        this._address = value;
+    }
+
     getInfo() {
         return this;
     }
